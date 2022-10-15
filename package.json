@@ -1,0 +1,6 @@
+{
+  "name": "mongoDB-project",
+  "dependencies": {
+    "mongodb": "latest"
+  }
+}
