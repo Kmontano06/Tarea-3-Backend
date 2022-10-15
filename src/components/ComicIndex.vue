@@ -38,7 +38,7 @@ export default {
         .then((response) => response.json())
         .then((items) => {
           this.comics = items;
-          console.log(items)
+          console.log("Hellos"+items)
         })
      },
      deleteComic(id) {
