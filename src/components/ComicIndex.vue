@@ -28,7 +28,7 @@ export default {
     };
   },
   mounted() {
-    this.allComics()
+    this.oneComic()
   },
   methods: {
     allComics() {
