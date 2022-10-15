@@ -9,11 +9,9 @@
 	   </tr>
        </thead><tbody>
        <tr v-for='comic in comics'>
-        <td>{{comic.title}}</td>
+        <td>{{comic.name}}</td>
        </tr></tbody>
      </table>
-     <router-link class="button button-primary" 
-       to="/book/create">New</router-link>
    </div>
   </div>
 </template>
