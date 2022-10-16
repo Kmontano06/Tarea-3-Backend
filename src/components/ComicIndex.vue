@@ -8,8 +8,8 @@
          <th>Title</th>
 	   </tr>
        </thead><tbody>
-       <tr>
-        <td>{{comic.name}}</td>
+       <tr v-for='comic in comics'>
+        <td>{{comic.title}}</td>
        </tr></tbody>
      </table>
    </div>
@@ -23,12 +23,11 @@ export default {
   data() {
     return {
       title: 'Comics List',
-      comics: [],
-      comic: {}
+      comics: []
     };
   },
   mounted() {
-    this.oneComic()
+    this.allComics()
   },
   methods: {
     allComics() {
@@ -48,17 +47,7 @@ export default {
             this.allBooks();
           }
         )
-     },
-     oneComic() {
-      fetch(this.url+'/.netlify/functions/comicFind/1',
-        { headers: {'Accept': 'application/json'}})
-        .then((response) => response.json())
-        .then((items) => {
-          this.comic = items;
-          console.log(items)
-        })
-     },
-
+     }
   }
 };
 </script>
