@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-    <div class="row">
+    <div class="row" v-if="edit">
       <div class="col-2">
        <img v-bind:src="comic.img" class="w-100">
       </div>
@@ -104,7 +104,7 @@ export default {
         { headers: {'Content-Type':'application/json'},
           method: 'POST',
           body: JSON.stringify(this.comic)});
-      this.$router.push('/comic');
+      this.$router.reload()
     }
   }
 };

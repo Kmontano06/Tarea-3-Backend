@@ -1,9 +1,12 @@
 <!-- ComicIndex.vue -->
 <template>
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
       <div class="container-fluid">
         <h1>{{title}}</h1>
+        <div class="justify-content-end">
+          <router-link class="btn btn-primary" to="/comic/create">Crear Comic</router-link>
+        </div>
       </div>
     </nav>
     <table class="table">
