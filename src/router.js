@@ -4,6 +4,8 @@ import ComicIndex from "./components/ComicIndex.vue";
 import ComicDetails from "./components/ComicDetails.vue"
 import PersonajeIndex from "./components/PersonajeIndex.vue";
 import PersonajeDetails from "./components/PersonajeDetails.vue"
+import IlustradorIndex from "./components/IlustradorIndex.vue";
+import IlustradorDetails from "./components/IlustradorDetails.vue"
 
 const routes = [
   { path: "/", component: Home },
@@ -15,13 +17,13 @@ const routes = [
   { path: "/comic/delete/:id", 
     component: ComicIndex, props: {delete:true} },
     //Ilustrador
-  { path: "/ilustrador", component: ComicIndex },
+  { path: "/ilustrador", component: IlustradorIndex },
   { path: "/ilustrador/edit/:id", 
-    component: ComicDetails, props: {edit:true} },
+    component: IlustradorDetails, props: {edit:true} },
   { path: "/ilustrador/create", 
-    component: ComicDetails, props: {create:true} },
+    component: IlustradorDetails, props: {create:true} },
   { path: "/ilustrador/delete/:id", 
-    component: ComicIndex, props: {delete:true} },
+    component: IlustradorIndex, props: {delete:true} },
     //Personaje
   { path: "/personaje", component: PersonajeIndex },
   { path: "/personaje/edit/:id", 

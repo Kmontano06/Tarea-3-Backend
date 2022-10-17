@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <h1>{{title}}</h1>
         <div class="justify-content-end">
-          <router-link class="btn btn-primary" to="/personaje/create">Crear Personaje</router-link>
+          <router-link class="btn btn-primary" to="/personaje/create">Crear Ilustrador</router-link>
         </div>
       </div>
     </nav>
@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody class="scroll-area">
-        <tr v-for='aux in personajes'>
+        <tr v-for='aux in ilustradores'>
           <td><img v-bind:src="aux.img"  width="80" height="110"></td>
           <td>  <router-link :to="'/personaje/edit/'+aux._id">{{aux.name}}</router-link></td>
           <td>
@@ -27,7 +27,7 @@
               <li><router-link  class="db" :to="'/comic/edit/'+com.comic_id">{{com.title}}</router-link></li>
             </ul>
           </td>
-          <td><button class="btn btn-danger" v-on:click="deletePersonaje(aux._id)"><img src="../assets/images/eliminar.png" alt="" width="15"/></button></td>
+          <td><button class="btn btn-danger" v-on:click="deleteIlustrador(aux._id)"><img src="../assets/images/eliminar.png" alt="" width="15"/></button></td>
         </tr>
       </tbody>
     </table>
@@ -43,28 +43,28 @@ export default {
   name: "Comics Index",
   data() {
     return {
-      title: 'Personajes List',
-      personajes: []
+      title: 'Ilustradores List',
+      ilustradores: []
     };
   },
   mounted() {
-    this.allPersonajes()
+    this.allIlustradores()
   },
   methods: {
-    allPersonajes() {
-      fetch(this.url+'/.netlify/functions/personajeFindAll',
+    allIlustradores() {
+      fetch(this.url+'/.netlify/functions/ilustradorFindAll',
         { headers: {'Accept': 'application/json'}})
         .then((response) => response.json())
         .then((items) => {
-          this.personajes = items;
+          this.ilustradores = items;
         })
      },
-     deletePersonaje(id) {
-       fetch(this.url+'/.netlify/functions/personajeDelete/'+id,
+     deleteIlustrador(id) {
+       fetch(this.url+'/.netlify/functions/ilustradorDelete/'+id,
          { headers: {'Content-Type': 'application/json'},
            method: 'DELETE'})
           .then((items) => {
-            this.allPersonajes();
+            this.allIlustradores();
           }
         )
      }
