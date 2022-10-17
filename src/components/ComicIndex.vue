@@ -1,20 +1,36 @@
 <!-- ComicIndex.vue -->
 <template>
-  <div class="row">
-   <div style="margin-top: 5%">
-     <h2>{{title}}</h2>
-     <table><thead>
-       <tr>
-         <th>Title</th>
-	   </tr>
-       </thead><tbody>
-       <tr v-for='comic in comics'>
-        <td>{{comic.title}}</td>
-       </tr></tbody>
-     </table>
-   </div>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <h1>{{title}}</h1>
+      </div>
+    </nav>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Imagen</th>
+          <th scope="col">Título</th>
+          <th scope="col">Personaje</th>
+          <th scope="col">Ilustrador</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="scroll-area">
+        <tr v-for='comic in comics'>
+          <td><img v-bind:src="comic.img"  width="80" height="110"></td>
+          <td>  <router-link :to="'/comic/edit/'+comic._id">{{comic.title}}</router-link></td>
+          <td><router-link :to="'/personaje/edit/'+comic.personaje.personaje_id">{{comic.personaje.name}}</router-link></td>
+          <td><router-link :to="'/ilustrador/edit/'+comic.ilustrador.ilustrador_id">{{comic.ilustrador.name}}</router-link></td>
+          <td><button class="btn btn-danger" v-on:click="deleteComic(comic._id)"><img src="../assets/images/eliminar.png" alt="" width="15"/></button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </template>
+
+
 
 <script>
 	
@@ -36,7 +52,6 @@ export default {
         .then((response) => response.json())
         .then((items) => {
           this.comics = items;
-          console.log(items)
         })
      },
      deleteComic(id) {
@@ -44,7 +59,7 @@ export default {
          { headers: {'Content-Type': 'application/json'},
            method: 'DELETE'})
           .then((items) => {
-            this.allBooks();
+            this.allComics();
           }
         )
      }

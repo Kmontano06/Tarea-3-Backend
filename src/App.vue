@@ -1,13 +1,28 @@
 <template>
-<div id="app" class="container">
-  <div class="row"  style="margin-top: 15px">
-    <router-link class="three columns button button-primary" 
-      to="/">Home</router-link>
-    <router-link class="three columns button button-primary" 
-      to="/comic">Comics</router-link>
-  </div>
- <router-view />
-</div>
+<nav class="navbar navbar-expand-sm navbar-light">
+      <div class="container-fluid">
+        <div class="navbar-header ">
+          <router-link to="/"><img src="./assets/images/logo.png" alt="" width="150"/></router-link>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav" >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link to="/" class="nav-link">Home</router-link>
+            </li>
+            <li class="nav-item">
+               <router-link to="/comic" class="nav-link">Comics</router-link>
+            </li>
+            <li class="nav-item">
+                <router-link to="/ilustrador" class="nav-link">Ilustradores</router-link>
+            </li>
+            <li class="nav-item">
+               <router-link to="/personaje" class="nav-link">Personajes</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <router-view></router-view>
 </template>
 
 <script>
