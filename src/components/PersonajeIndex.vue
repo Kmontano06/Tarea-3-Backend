@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <h1>{{title}}</h1>
         <div class="justify-content-end">
-          <router-link class="btn btn-primary" to="/personaje/create">Crear Comic</router-link>
+          <router-link class="btn btn-primary" to="/personaje/create">Crear Personaje</router-link>
         </div>
       </div>
     </nav>
@@ -27,7 +27,7 @@
               <li><router-link  class="db" :to="'/comic/edit/'+com.comic_id">{{com.title}}</router-link></li>
             </ul>
           </td>
-          <td><button class="btn btn-danger" v-on:click="deleteComic(comic._id)"><img src="../assets/images/eliminar.png" alt="" width="15"/></button></td>
+          <td><button class="btn btn-danger" v-on:click="deletePersonaje(aux._id)"><img src="../assets/images/eliminar.png" alt="" width="15"/></button></td>
         </tr>
       </tbody>
     </table>
