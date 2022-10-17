@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     const id = parseInt(event.path.split("/").reverse()[0]);
     const data = JSON.parse(event.body);
     console.log(event.body)
-    await client.db("comicsdb").collection("comics").updateOne({_id:id},{$set:data});
+    await client.db("comicsdb").collection("personajes").updateOne({_id:id},{$set:data});
     return { statusCode: 200, headers, body: 'OK'};
   } catch (error) {
     console.log(error);

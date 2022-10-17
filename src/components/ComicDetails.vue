@@ -104,7 +104,7 @@ export default {
         { headers: {'Content-Type':'application/json'},
           method: 'POST',
           body: JSON.stringify(this.comic)});
-      this.$router.reload()
+      this.$router.push('/comic')
     }
   }
 };

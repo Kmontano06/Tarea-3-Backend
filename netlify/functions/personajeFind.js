@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
     const client = await clientPromise;
     const id = parseInt(event.path.split("/").reverse()[0]);
     const aux = 
-      await client.db("comicsdb").collection("comics").find({_id:id}).toArray();
+      await client.db("comicsdb").collection("personajes").find({_id:id}).toArray();
     return { statusCode: 200, headers, body: JSON.stringify(aux)};
   } catch (error) {
     console.log(error);
