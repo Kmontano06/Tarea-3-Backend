@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "./components/Home.vue";
 import ComicIndex from "./components/ComicIndex.vue";
 import ComicDetails from "./components/ComicDetails.vue"
+import PersonajeIndex from "./components/PersonajeIndex.vue";
+import PersonajeDetails from "./components/PersonajeDetails.vue"
 
 const routes = [
   { path: "/", component: Home },
@@ -21,13 +23,13 @@ const routes = [
   { path: "/ilustrador/delete/:id", 
     component: ComicIndex, props: {delete:true} },
     //Personaje
-  { path: "/personaje", component: ComicIndex },
+  { path: "/personaje", component: PersonajeIndex },
   { path: "/personaje/edit/:id", 
-    component: ComicDetails, props: {edit:true} },
+    component: PersonajeDetails, props: {edit:true} },
   { path: "/personaje/create", 
-    component: ComicDetails, props: {create:true} },
+    component: PersonajeDetails, props: {create:true} },
   { path: "/personaje/delete/:id", 
-    component: ComicIndex, props: {delete:true} }
+    component: PersonajeIndex, props: {delete:true} }
 ];
 
 const history = createWebHistory();

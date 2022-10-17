@@ -14,3 +14,7 @@ nav{
 .mr-20{
 	margin-right: 20px;
 }
+
+textarea{
+	resize: none;
+}

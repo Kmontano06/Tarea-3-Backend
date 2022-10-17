@@ -6,8 +6,8 @@
       </div>
       <div class="col-md-10">
        <h2>{{comic.title}}</h2>
-       <p>Ilustrador: <!--<router-link :to="'/ilustrador/edit/'+comic.ilustrador.ilustrador_id">{{comic.ilustrador.name}}</router-link>--></p>
-       <p>Personaje Principal: <!--<router-link :to="'/personaje/edit/'+comic.personaje.personaje_id">{{comic.personaje.name}}</router-link>--></p>
+       <p>Ilustrador: <router-link :to="'/ilustrador/edit/'+comic.ilustrador.ilustrador_id">{{comic.ilustrador.name}}</router-link></p>
+       <p>Personaje Principal: <router-link :to="'/personaje/edit/'+comic.personaje.personaje_id">{{comic.personaje.name}}</router-link></p>
       </div>
     </div>
     
