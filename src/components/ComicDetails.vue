@@ -96,7 +96,7 @@ export default {
         { headers: {'Content-Type':'application/json'},
           method: 'PUT',
           body: JSON.stringify(this.comic)});
-      this.$router.push('/comic');
+      this.$router.push('/comic/edit/'+id);
 
     },
     createComic: function() {
