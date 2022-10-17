@@ -6,8 +6,8 @@
       </div>
       <div class="col-md-10">
        <h2>{{comic.title}}</h2>
-       <p>Ilustrador: <router-link :to="'/ilustrador/edit/'+comic.ilustrador.ilustrador_id">{{comic.ilustrador.name}}</router-link></p>
-       <p>Personaje Principal: <router-link :to="'/personaje/edit/'+comic.personaje.personaje_id">{{comic.personaje.name}}</router-link></p>
+       <p>Ilustrador: <!--<router-link :to="'/ilustrador/edit/'+comic.ilustrador.ilustrador_id">{{comic.ilustrador.name}}</router-link>--></p>
+       <p>Personaje Principal: <!--<router-link :to="'/personaje/edit/'+comic.personaje.personaje_id">{{comic.personaje.name}}</router-link>--></p>
       </div>
     </div>
     
@@ -39,7 +39,7 @@
       <div class="col-12 text-r mb-5">
         <router-link to="/comic" class="btn btn-secondary mr-20">Regresar</router-link>
         <button v-if="create" class="btn btn-primary" v-on:click="createComic()">Guardar Comic</button>
-        <button v-if="edit" class="btn btn-primary" v-on:click="updateComic()">Actualizar Comic</button>
+        <button v-if="edit" class="btn btn-primary" v-on:click="updateComic(comic._id)">Actualizar Comic</button>
       </div>
     </form>
   </div>
@@ -89,26 +89,25 @@ export default {
       .then((response) => response.json())
       .then((items) => {
        this.comic = items[0];
-       console.log(items[0])
       })
     },
-    updateBook: function(id) {
-      fetch(this.url+'/.netlify/functions/bookUpdate/'+id,
+    updateComic: function(id) {
+      fetch(this.url+'/.netlify/functions/comicUpdate/'+id,
         { headers: {'Content-Type':'application/json'},
           method: 'PUT',
-          body: JSON.stringify(this.book)})
+          body: JSON.stringify(this.comic)})
         .then((data) => {
-          this.$router.push('/book');
+          this.$router.push('/comic');
         }
       )
     },
-    createBook: function() {
-      fetch(this.url+'/.netlify/functions/bookInsert',
+    createComic: function() {
+      fetch(this.url+'/.netlify/functions/comicInsert',
         { headers: {'Content-Type':'application/json'},
           method: 'POST',
-          body: JSON.stringify(this.book)})
+          body: JSON.stringify(this.comic)})
         .then((data) => {
-           this.$router.push('/book');
+           this.$router.push('/comic');
         }
       )
     }
