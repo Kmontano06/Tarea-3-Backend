@@ -95,11 +95,9 @@ export default {
       fetch(this.url+'/.netlify/functions/comicUpdate/'+id,
         { headers: {'Content-Type':'application/json'},
           method: 'PUT',
-          body: JSON.stringify(this.comic)})
-        .then((data) => {
-          this.$router.push('/comic');
-        }
-      )
+          body: JSON.stringify(this.comic)});
+      this.$router.push('/comic');
+
     },
     createComic: function() {
       fetch(this.url+'/.netlify/functions/comicInsert',
