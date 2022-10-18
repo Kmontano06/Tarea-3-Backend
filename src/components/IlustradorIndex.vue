@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <h1>{{title}}</h1>
         <div class="justify-content-end">
-          <router-link class="btn btn-primary" to="/personaje/create">Crear Ilustrador</router-link>
+          <router-link class="btn btn-primary" to="/ilustrador/create">Crear Ilustrador</router-link>
         </div>
       </div>
     </nav>
@@ -21,7 +21,7 @@
       <tbody class="scroll-area">
         <tr v-for='aux in ilustradores'>
           <td><img v-bind:src="aux.img"  width="80" height="110"></td>
-          <td>  <router-link :to="'/personaje/edit/'+aux._id">{{aux.name}}</router-link></td>
+          <td>  <router-link :to="'/ilustrador/edit/'+aux._id">{{aux.name}}</router-link></td>
           <td>
             <ul  v-for='com in aux.comic'>
               <li><router-link  class="db" :to="'/comic/edit/'+com.comic_id">{{com.title}}</router-link></li>

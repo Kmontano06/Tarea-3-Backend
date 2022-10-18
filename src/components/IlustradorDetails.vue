@@ -2,12 +2,12 @@
   <div class='container mt-5'>
     <div class='row' v-if='edit'>
       <div class='col-2'>
-       <img v-bind:src='personaje.img' class='w-100'>
+       <img v-bind:src='ilustrador.img' class='w-100'>
       </div>
       <div class='col-md-10'>
-       <h2>{{personaje.name}}</h2>
+       <h2>{{ilustrador.name}}</h2>
        <p>Comics:</p> 
-        <ul  v-for='com in personaje.comic'>
+        <ul  v-for='com in ilustrador.comic'>
               <li><router-link  class="db" :to="'/comic/edit/'+com.comic_id">{{com.title}}</router-link></li>
         </ul>
 
@@ -17,28 +17,28 @@
     <form class='row g-3 mt-2'>
       <div class='col-md-6'>
         <label for='inputEmail4' class='form-label'>Nombre</label>
-        <input type='text' class='form-control' v-model='personaje.name'>
+        <input type='text' class='form-control' v-model='ilustrador.name'>
       </div>
       <div class='col-md-6'>
         <label for='inputPassword4' class='form-label'>Nacionalidad</label>
-        <input type='text' class='form-control' v-model='personaje.nationality'>
+        <input type='text' class='form-control' v-model='ilustrador.nationality'>
       </div>
       <div class='col-6'>
         <label for='inputAddress' class='form-label'>Nacimiento</label>
-        <input type='text' class='form-control' v-model='personaje.birthday'>
+        <input type='text' class='form-control' v-model='ilustrador.birthday'>
       </div>
       <div class='col-6'>
-        <label for='inputAddress2' class='form-label'>Descripcion</label>
-        <textarea v-model="personaje.desc" class='form-control' style="resize:none;"></textarea>
+        <label for='inputAddress2' class='form-label'>Ocupación</label>
+        <input type='text' class='form-control' v-model='ilustrador.ocupation'>
       </div>
       <div class='col-md-12'>
         <label for='inputImg' class='form-label'>Imagen</label>
-        <input type='text' class='form-control' v-model='personaje.img'>
+        <input type='text' class='form-control' v-model='ilustrador.img'>
       </div>
       <div class='col-12 text-r mb-5'>
-        <router-link to='/personaje' class='btn btn-secondary mr-20'>Regresar</router-link>
-        <button v-if='create' class='btn btn-primary' v-on:click='createPersonaje()'>Guardar Personaje</button>
-        <button v-if='edit' class='btn btn-primary' v-on:click='updatePersonaje(personaje._id)'>Actualizar Personaje</button>
+        <router-link to='/ilustrador' class='btn btn-secondary mr-20'>Regresar</router-link>
+        <button v-if='create' class='btn btn-primary' v-on:click='createIlustrador()'>Guardar Ilustrador</button>
+        <button v-if='edit' class='btn btn-primary' v-on:click='updateIlustrador(ilustrador._id)'>Actualizar Ilustrador</button>
       </div>
     </form>
   </div>
@@ -54,48 +54,48 @@ export default {
   data() {
     return {
       title: 'Comic Data',
-      personaje: {}
+      ilustrador: {}
     }
   },
   mounted() {
     const route = useRoute()
     if (route.params.id != null)
-      this.findPersonaje(route.params.id);
+      this.findIlustrador(route.params.id);
     else {
-      this.personaje = {   
+      this.ilustrador = {   
         '_id': Math.floor(Math.random()*100000000),
         'name': '',
         'nationality': '',
         'birthday': '',
-        'desc': '',
+        'ocupation': '',
         'img': '',
         'comic': []
       }
     }
   },
   methods: {
-    findPersonaje: function(id) {
-      fetch(this.url+'/.netlify/functions/personajeFind/'+id,
+    findIlustrador: function(id) {
+      fetch(this.url+'/.netlify/functions/ilustradorFind/'+id,
       { headers: {'Accept': 'application/json'}})
       .then((response) => response.json())
       .then((items) => {
-       this.personaje = items[0];
+       this.ilustrador = items[0];
       })
     },
-    updatePersonaje: function(id) {
-      fetch(this.url+'/.netlify/functions/personajeUpdate/'+id,
+    updateIlustrador: function(id) {
+      fetch(this.url+'/.netlify/functions/ilustradorUpdate/'+id,
         { headers: {'Content-Type':'application/json'},
           method: 'PUT',
-          body: JSON.stringify(this.personaje)});
-      this.$router.push('/personaje');
+          body: JSON.stringify(this.ilustrador)});
+      this.$router.push('/ilustrador');
 
     },
-    createPersonaje: function() {
-      fetch(this.url+'/.netlify/functions/personajeInsert',
+    createIlustrador: function() {
+      fetch(this.url+'/.netlify/functions/ilustradorInsert',
         { headers: {'Content-Type':'application/json'},
           method: 'POST',
-          body: JSON.stringify(this.personaje)});
-      this.$router.push('/personaje')
+          body: JSON.stringify(this.ilustrador)});
+      this.$router.push('/ilustrador')
     }
   }
 };
